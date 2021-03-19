@@ -30,7 +30,7 @@ export default function Timer({timer, startGame, wordMatch}) {
             const currCount = countRef.current;
             if (currCount <= 0) {
             clearInterval(interval);
-            window.location.pathname = '/game-console'
+            window.location.pathname = '/game-over'
             return;
             }
             settime(currCount -1)
