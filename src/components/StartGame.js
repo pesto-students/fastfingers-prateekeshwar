@@ -39,7 +39,7 @@ export default function StartGame() {
   }
 
     return (
-      <div className="start-game">
+      <div className="start-game" onClick={() => {if (openDropDown) {setopenDropDown(false)}}} aria-hidden="true">
         <img src={keyboardImage} alt="img" className="keyboard-class" />
         <h3 className="heading">fast fingers</h3>
         <div className="start-game-content">
@@ -56,6 +56,7 @@ export default function StartGame() {
               name="enterName"
               id="enterName"
               placeholder="type your name"
+              autoComplete="off"
               value={playerName}
               onChange={(event) => setplayerName(event.target.value)}
             />
@@ -64,9 +65,9 @@ export default function StartGame() {
           <div style={{"height": "165px"}}>
             <button id="level" name="level"  type="button" onClick={() => setopenDropDown(!openDropDown)} className="dropdown">{difficultyLevel}</button>
             {openDropDown ? <div className="dropdown-menu">
-            <button type="button" className="dropdown-content" value="EASY" name={1} onClick={handleDropDownValue}>easy</button>
-            <button type="button" className="dropdown-content" value="MEDIUM" name={1.5} onClick={handleDropDownValue}>medium</button>
-            <button type="button" className="dropdown-content" value="HARD" name={2} onClick={handleDropDownValue}>hard</button>
+            <button type="button" className={difficultyLevel === 'EASY' ? "selected-dropdown" :"dropdown-content"} value="EASY" name={1} onClick={handleDropDownValue}>easy</button>
+            <button type="button" className={difficultyLevel === 'MEDIUM' ? "selected-dropdown" :"dropdown-content"} value="MEDIUM" name={1.5} onClick={handleDropDownValue}>medium</button>
+            <button type="button" className={difficultyLevel === 'HARD' ? "selected-dropdown" :"dropdown-content"} value="HARD" name={2} onClick={handleDropDownValue}>hard</button>
             </div>: null}
           </div>
           {error ? <span style={{color:"red"}}>{error}</span> : null}
