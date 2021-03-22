@@ -64,7 +64,6 @@
 
 .enter-name {
     margin: 34px 0 25px;
-    /* padding: 30px 154px 24px 32px; */
     padding: 16px 41px 15px 17px;
     text-transform: uppercase;
     opacity: 0.59;
@@ -88,16 +87,16 @@
     outline: none;
 }
 
-.enter-name::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+.enter-name::placeholder {
     color: var(--evergreen);
     opacity: 1;
   }
   
-  .enter-name:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  .enter-name:-ms-input-placeholder {
     color: var(--evergreen);
   }
   
-  .enter-name::-ms-input-placeholder { /* Microsoft Edge */
+  .enter-name::-ms-input-placeholder {
     color: var(--evergreen);
   }
 
@@ -122,8 +121,7 @@
     color: var(--cool-grey-two);
     -webkit-appearance: none;
     -moz-appearance: none;
-    background: url(../assets/arrow/arrow.png) 97% center no-repeat;   /* Add custom arrow */
-    /* padding:2px; */
+    background: url(../assets/arrow/arrow.png) 97% center no-repeat;
   }
 
   .dropdown:focus{
@@ -178,7 +176,7 @@
   }
 
   .dropdown-content {
-    width: 67px;
+    width: 408px;
     height: 25px;
     margin: 0 48.1px 5px 8px;
     font-family: Breamcatcher;
@@ -192,17 +190,38 @@
     text-align: left;
     color: var(--evergreen);
     text-transform: uppercase;
+    outline: none;
     border: none;
     background-color: var(--white);
+  }
+
+  .selected-dropdown{
+    margin: 0 0px 2px 8px;
+    width: 408px;
+    border-radius: 5px;
+    background-color: #053a45;
+    text-transform: uppercase;
+    outline: none;
+    border: none;
+    font-family: Breamcatcher;
+    font-size: 25px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.2;
+    letter-spacing: normal;
+    text-align: left;
+    color: var(--white);
   }
 
   .dropdown-menu{
     display: flex;
     flex-direction: column;
-    width: 445px;
+    justify-content: center;
+    width: 425px;
     border-bottom-right-radius: 15px;
     border-bottom-left-radius: 15px;
-    height: 95px;
+    height: 110px;
     margin: 0px 11px 0;
     opacity: 0.59;
     box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.8);
@@ -233,15 +252,10 @@
   }
 
   .icon{
-    /* width: 40.7px;
-    height: 40.7px; */
-    /* margin: 0 22.3px 6.3px 0; */
     object-fit: contain;
     width: 26px;
     height: 24px;
-    /* top: 10px; */
     margin: 10px 0px 0px 21px;
-    /* background-color: var(--light-red); */
   }
 
   .score-board{
@@ -289,7 +303,9 @@
   }
 
   .timer{
-    margin: 93.4px 43.8px 30.3px 28.7px;
+    margin: 165.4px 0px 0px 57.7px;
+    position: absolute;
+    top: 0;
     font-family: Gotham;
     font-size: 57px;
     font-weight: 500;
@@ -305,27 +321,9 @@
     width: 217.1px;
     height: 217.1px;
     padding: 11.7px 28.3px 64.8px 45.3px;
-    background: url(../assets/timer-circle/timer-circle.png) 0 center no-repeat;
   }
 
   .word {
-    /* width: 404px;
-    height: 92px;
-    margin: 0.2px 34.3px 18.2px 44.4px;
-    text-shadow: 0 0 16px rgba(0, 0, 0, 0.16);
-    font-family: Gotham;
-    font-size: 92px;
-    font-weight: 500;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.2;
-    letter-spacing: normal;
-    text-align: left;
-    color: var(--white); */
-
-    /* width: 404px; */
-    /* height: 92px; */
-    /* margin: 0.2px 34.3px 18.2px 44.4px; */
     text-transform: uppercase;
     text-shadow: 0 0 16px rgba(0, 0, 0, 0.16);
     font-family: Gotham;
@@ -344,7 +342,6 @@
   }
 
   .play-game-timer{
-    margin-left: 62px;
     flex-direction: column;
     display: flex;
     align-items: center;
@@ -357,3 +354,142 @@
     padding: 22px 0 0 0;
     cursor: pointer;
   }
+
+
+  .sub-heading-fast-finger{
+    margin: 0px 114px 0 0;
+    font-family: LaserCorpsGradient;
+    font-size: 36px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.2;
+    letter-spacing: normal;
+    text-align: left;
+    color: var(--light-red);
+  }
+
+  .score-count{
+    margin: 0px 28px 0 0;
+    font-family: Breamcatcher;
+    font-size: 32px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.2;
+    letter-spacing: normal;
+    text-align: left;
+    color: var(--light-red);
+  }
+
+.stop-game-icon {
+  height: 57px;
+  padding: 9px 0 0 0;
+  cursor: pointer;
+  margin-right: -17px;
+}
+
+.stop-game-button{
+  margin-top: 40px;
+}
+
+.quit-button{
+  border: none;
+  margin: 0px 0 11px 20.5px;
+  padding: 0;
+  text-shadow: 0 0 16px rgba(0, 0, 0, 0.16);
+  font-family: Gotham;
+  font-size: 36px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.21;
+  letter-spacing: normal;
+  text-align: left;
+  color: var(--light-red);
+  text-transform: uppercase;
+  background: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.genral-justify-content{
+  justify-content: space-between;
+}
+
+.game-over-game-count{
+  margin: 93px 0px 14px 0px;
+  font-family: Gotham;
+  font-size: 45px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: left;
+  color: var(--white);
+}
+
+.score-value{
+    margin: 0px 20px 0px 9.3px;
+  font-family: Gotham;
+  font-size: 62px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: left;
+  color: var(--white);
+}
+
+.new-high-score{
+    margin: 26px 0px 34.3px 0px;
+  font-family: Gotham;
+  font-size: 36px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.21;
+  letter-spacing: normal;
+  text-align: left;
+  color: var(--white);
+}
+
+.persional-best{
+  margin: 0px 0px 0px 19px;
+  font-family: Gotham;
+  font-size: 11px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.18;
+  letter-spacing: normal;
+  text-align: left;
+  color: var(--light-red);
+}
+
+.base-timer {
+  position: relative;
+  height: 300px;
+  width: 300px;
+}
+
+.base-timer__circle {
+  fill: none;
+  stroke: none;
+}
+
+.base-timer__path-elapsed {
+  stroke-width: 5px;
+  stroke: #ffff;
+}
+
+.base-timer__path-remaining {
+  stroke-width: 5px;
+  stroke-linecap: round;
+  transform: rotate(90deg);
+  transform-origin: center;
+  transition: auto;
+  stroke: var(--light-red);;
+}
