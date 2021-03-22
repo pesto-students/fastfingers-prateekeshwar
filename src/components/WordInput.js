@@ -113,7 +113,7 @@ useEffect(() => {
       handleWordChange={handleWordChange}/> 
       <div className="general-flex-direction-row">{changeWordColor}</div>
       <input
-        className="enter-name"
+        className="enter-name general-font-design"
         type="text"
         name="enterWord"
         id="enterWord"

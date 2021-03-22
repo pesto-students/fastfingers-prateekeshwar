@@ -79,8 +79,8 @@ export default function GameConsole() {
         <WordInput stopGame={stopGame}/>
       </div>
       <div className="general-flex-direction-column">
-        <p className="sub-heading-fast-finger">fast fingers</p>
-        <p className="score-count">{`SCORE: ${
+        <p className="sub-heading-fast-finger general-font-design">fast fingers</p>
+        <p className="score-count general-font-design">{`SCORE: ${
           minute < 10 ? `0${minute}` : minute
         }:${second < 10 ? `0${second}` : second}`}</p>
       </div>

@@ -36,9 +36,9 @@ export default function GameOver() {
         />
       </div>
       <div className="play-game-timer">
-        <p className="game-over-game-count">SCORE : GAME {gameCount}</p>
-        <p className="score-value">{scoreList.length ? scoreList[scoreList.length - 1].score : "0:00"}</p>
-        {newHighScore ? <p className="new-high-score">New High Score</p> : null}
+        <p className="game-over-game-count general-font-design-color">SCORE : GAME {gameCount}</p>
+        <p className="score-value general-font-design-color">{scoreList.length ? scoreList[scoreList.length - 1].score : "0:00"}</p>
+        {newHighScore ? <p className="new-high-score general-font-design">New High Score</p> : null}
         <div
           className="start-game-button"
           onClick={()=> {window.location.pathname = '/game-console'}}
@@ -54,7 +54,7 @@ export default function GameOver() {
         </div>
       </div>
       <div>
-        <p className="sub-heading-fast-finger">fast fingers</p>
+        <p className="sub-heading-fast-finger general-font-design">fast fingers</p>
       </div>
     </div>
   );
