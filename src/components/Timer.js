@@ -63,7 +63,7 @@ export default function Timer({
           />
         </g>
       </svg>
-      <p className="timer">{(time / 100).toFixed(2).replace(/\./g, ':')}</p>
+      <p className="timer general-font-design-color">{(time / 100).toFixed(2).replace(/\./g, ':')}</p>
     </div>
   );
 }

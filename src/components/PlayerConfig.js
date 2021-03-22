@@ -21,13 +21,13 @@ export default function PlayerConfig() {
     <div className="general-flex-direction-column">
       <div className="general-flex-direction-row">
         <img src={userIcon} className="icon" alt="user-icon" />
-        <h3 className="player-name-level">
+        <h3 className="player-name-level general-font-design">
           {window.sessionStorage.getItem('playerName')}
         </h3>
       </div>
       <div className="general-flex-direction-row">
         <img src={gameIcon} alt="game-icon" className="icon" />
-        <h3 className="player-name-level">LEVEL : {difficultyLevel}</h3>
+        <h3 className="player-name-level general-font-design">LEVEL : {difficultyLevel}</h3>
       </div>
     </div>
   );

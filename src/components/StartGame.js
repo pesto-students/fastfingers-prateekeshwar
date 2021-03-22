@@ -41,7 +41,7 @@ export default function StartGame() {
     return (
       <div className="start-game" onClick={() => {if (openDropDown) {setopenDropDown(false)}}} aria-hidden="true">
         <img src={keyboardImage} alt="img" className="keyboard-class" />
-        <h3 className="heading">fast fingers</h3>
+        <h3 className="heading general-font-design">fast fingers</h3>
         <div className="start-game-content">
           <p className="line" />
           <p className="game-detail">the ultimate typing game</p>
@@ -50,7 +50,7 @@ export default function StartGame() {
         <form>
           <div>
             <input
-              className="enter-name"
+              className="enter-name general-font-design"
               type="text"
               name="enterName"
               id="enterName"
@@ -62,11 +62,11 @@ export default function StartGame() {
           </div>
 
           <div style={{"height": "165px"}}>
-            <button id="level" name="level"  type="button" onClick={() => setopenDropDown(!openDropDown)} className="dropdown">{difficultyLevel}</button>
+            <button id="level" name="level"  type="button" onClick={() => setopenDropDown(!openDropDown)} className="dropdown general-font-design">{difficultyLevel}</button>
             {openDropDown ? <div className="dropdown-menu">
-            <button type="button" className={difficultyLevel === 'EASY' ? "selected-dropdown" :"dropdown-content"} value="EASY" name={1} onClick={handleDropDownValue}>easy</button>
-            <button type="button" className={difficultyLevel === 'MEDIUM' ? "selected-dropdown" :"dropdown-content"} value="MEDIUM" name={1.5} onClick={handleDropDownValue}>medium</button>
-            <button type="button" className={difficultyLevel === 'HARD' ? "selected-dropdown" :"dropdown-content"} value="HARD" name={2} onClick={handleDropDownValue}>hard</button>
+            <button type="button" className={`${difficultyLevel === 'EASY' ? "selected-dropdown" :"dropdown-content"} general-font-design`} value="EASY" name={1} onClick={handleDropDownValue}>easy</button>
+            <button type="button" className={`${difficultyLevel === 'MEDIUM' ? "selected-dropdown" :"dropdown-content"} general-font-design`} value="MEDIUM" name={1.5} onClick={handleDropDownValue}>medium</button>
+            <button type="button" className={`${difficultyLevel === 'HARD' ? "selected-dropdown" :"dropdown-content"} general-font-design`} value="HARD" name={2} onClick={handleDropDownValue}>hard</button>
             </div>: null}
           </div>
           {error ? <span style={{color:"red"}}>{error}</span> : null}

@@ -23,7 +23,7 @@ export default function ScoreBoard() {
   }, []);
 
   const content = scoreList.map(({ id, score }) => (
-    <li key={id} className="individual-score">
+    <li key={id} className="individual-score general-font-design">
       <span className="">{`Game ${id} : ${score}`}</span>
     </li>
   ));
@@ -32,12 +32,12 @@ export default function ScoreBoard() {
     <div className="score-board">
       <h4 className="score-box-heading">SCORE BOARD</h4>
       <ul>{content}</ul>
-      <p className="persional-best">PERSONAL BEST</p>
-      {newHighScore ? <li key={newHighScore.id} className="individual-score">
+      <p className="persional-best general-font-design">PERSONAL BEST</p>
+      {newHighScore ?<ul><li key={newHighScore.id} className="individual-score general-font-design">
         <span className="">
           {`Game ${newHighScore.id} : ${newHighScore.score}`}
         </span>
-      </li>: null}
+      </li> </ul> : null}
     </div>
   );
 }
