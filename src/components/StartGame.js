@@ -47,8 +47,7 @@ export default function StartGame() {
           <p className="game-detail">the ultimate typing game</p>
           <p className="line" />
         </div>
-        <form onSubmit={handleSubmit}
-        >
+        <form>
           <div>
             <input
               className="enter-name"
@@ -71,7 +70,8 @@ export default function StartGame() {
             </div>: null}
           </div>
           {error ? <span style={{color:"red"}}>{error}</span> : null}
-          <div className="start-game-button">
+          <div className="start-game-button" onClick={handleSubmit}
+          aria-hidden="true">
           <img src={playGame} alt="play-img" className=""/>
             <input
               type="submit"
