@@ -1,16 +1,38 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from "prop-types";
 import './style.css';
 import Timer from './Timer';
 import wordArray from "../data/dictionary.json"
 
-export default function WordInput() {
-  const [difficultyLevel] = useState(window.sessionStorage.getItem("difficultyLevel"))
-  const [difficultyFactor] = useState(window.sessionStorage.getItem("difficultyFactor"))
+export default function WordInput({stopGame}) {
+  const [difficultyLevel, setdifficultyLevel] = useState(window.sessionStorage.getItem("difficultyLevel"))
+  const [difficultyFactor, setdifficultyFactor] = useState(JSON.parse(window.sessionStorage.getItem("difficultyFactor")))
   const [wordInput, setwordInput] = useState('');
   const [wordGiven, setwordGiven] = useState('WINDOW'.toUpperCase());
   const [timer, settimer] = useState(0);
   const [clicked, setClicked] = useState(false);
-  const [WordMatch, setWordMatch] = useState(false);
+  const [wordChange, setwordChange] = useState(false);
+
+  const handleWordChange = () => {
+    setwordChange(!wordChange)
+  }
+
+  const handleDifficultyLevelFactor = () => {
+    if (difficultyFactor >= 1.5 && difficultyFactor < 2 && difficultyLevel !== 'MEDIUM') {
+        setdifficultyLevel("MEDIUM")
+        window.sessionStorage.setItem("difficultyLevel", "MEDIUM")
+      }else if (difficultyFactor < 1.5 && difficultyLevel !== 'EASY') {
+        setdifficultyLevel("EASY")
+        window.sessionStorage.setItem("difficultyLevel", "EASY")
+      } else if (difficultyFactor >= 2 && difficultyLevel !== 'HARD') {
+        setdifficultyLevel("HARD")
+        window.sessionStorage.setItem("difficultyLevel", "HARD")
+      }
+  }
+
+  useEffect(()=>{
+      handleDifficultyLevelFactor()
+  }, [])
 
   const getRandomWord = () => {
       let filterWordArray;
@@ -23,7 +45,12 @@ export default function WordInput() {
     }
     const randomWord = filterWordArray[Math.floor(Math.random() * filterWordArray.length)];
     setwordGiven(randomWord)
+    if (Math.ceil(randomWord.length/difficultyFactor)*100 <= 1) {
+        settimer(200)
+        return;
+    }
     settimer(Math.ceil(randomWord.length/difficultyFactor)*100)
+    setwordChange(true);
   }
 
 
@@ -36,7 +63,10 @@ const handleClick = () => {
   const handleChange = (event) => {
     setwordInput(event.target.value)
       if (event.target.value.toLowerCase() === wordGiven) {
-          setWordMatch(true)
+        setwordInput("")
+        setdifficultyFactor(prevDifficultyFactor => prevDifficultyFactor + 0.01)
+        handleDifficultyLevelFactor()
+        getRandomWord()
       }
   }
 
@@ -79,7 +109,8 @@ useEffect(() => {
 
   return (
     <div className="play-game-timer">
-      <Timer timer={timer} startGame={clicked} wordMatch={WordMatch}/> 
+      <Timer timer={timer} stopGame={stopGame} wordChange={wordChange} 
+      handleWordChange={handleWordChange}/> 
       <div className="general-flex-direction-row">{changeWordColor}</div>
       <input
         className="enter-name"
@@ -94,3 +125,8 @@ useEffect(() => {
     </div>
   );
 }
+
+
+WordInput.propTypes = {
+    stopGame: PropTypes.func.isRequired
+  }
