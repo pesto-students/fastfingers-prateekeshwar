@@ -1,22 +1,43 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './style.css';
 
-export default function ScoreBoard() {
+import getMaximumScoreObj from '../utility'
 
-const content = JSON.parse(window.sessionStorage.getItem("scoreList")).map(({ id, score }) => 
-         (
-          <li key={id} className="individual-score">
-            <span className="">
-              {`Game ${id} : ${score}`}
-            </span>
-          </li>
-        )
-)
+export default function ScoreBoard() {
+  const [scoreList, setscoreList] = useState([]);
+  const [newHighScore, setnewHighScore] = useState("");
+
+  useEffect(() => {
+      const storeList = JSON.parse(
+        window.sessionStorage.getItem('scoreList') || '[{}]'
+      )
+      if (storeList.length) {
+        const maxScoreObj = getMaximumScoreObj(storeList)
+    setnewHighScore(maxScoreObj);
+    setscoreList(
+      JSON.parse(window.sessionStorage.getItem('scoreList') || '[]').filter(
+        (obj) => Number(obj.id) !== Number(maxScoreObj.id)
+      )
+    );
+}
+  }, []);
+
+  const content = scoreList.map(({ id, score }) => (
+    <li key={id} className="individual-score">
+      <span className="">{`Game ${id} : ${score}`}</span>
+    </li>
+  ));
 
   return (
     <div className="score-board">
-    <h4 className="score-box-heading">SCORE BOARD</h4>
-    <ul>{content}</ul>
+      <h4 className="score-box-heading">SCORE BOARD</h4>
+      <ul>{content}</ul>
+      <p className="persional-best">PERSONAL BEST</p>
+      {newHighScore ? <li key={newHighScore.id} className="individual-score">
+        <span className="">
+          {`Game ${newHighScore.id} : ${newHighScore.score}`}
+        </span>
+      </li>: null}
     </div>
   );
 }
