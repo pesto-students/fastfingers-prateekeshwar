@@ -5,6 +5,12 @@
   --cool-grey-two: #97a5a7;
 }
 
+/* Remove button padding in FF */
+.dropdown::-moz-focus-inner {
+  border:0;
+  padding:0;
+}
+
 .general-font-design {
   font-weight: normal;
   font-stretch: normal;
@@ -76,7 +82,7 @@
 }
 
 .enter-name {
-  margin: 34px 0 25px;
+  margin: 34px 0 4px;
   padding: 16px 41px 15px 17px;
   text-transform: uppercase;
   opacity: 0.59;
@@ -108,7 +114,7 @@
 
 .dropdown {
   text-transform: uppercase;
-  width: 445px;
+  display: flex;
   height: 66px;
   right: 1rem;
   padding: 0px 0px 0px 29px;
@@ -142,13 +148,26 @@ select {
   cursor: pointer;
 }
 
+.input-margin-font-size-game-over{
+  margin: 0 0 0 20.5px;
+  font-size: 36px;
+}
+
+.input-margin-font-size-game-console{
+  margin: 0 0 0 20.5px;
+  font-size: 36px;
+}
+
+.input-margin-font-size-game-start{
+  margin: 0 0 0 20.5px;
+  font-size: 36px;
+}
+
 .start-game-button input {
   border: none;
-  margin: 0 0 0 20.5px;
   padding: 0;
   text-shadow: 0 0 16px rgba(0, 0, 0, 0.16);
   font-family: Gotham;
-  font-size: 36px;
   font-weight: 500;
   font-stretch: normal;
   font-style: normal;
@@ -178,7 +197,7 @@ select {
 
 .selected-dropdown {
   margin: 0 0px 2px 8px;
-  width: 408px;
+  /* width: 408px; */
   border-radius: 5px;
   background-color: #053a45;
   text-transform: uppercase;
@@ -189,11 +208,14 @@ select {
   color: var(--white);
 }
 
+.selected-dropdown-width{
+  width: 408px;
+}
+
 .dropdown-menu {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 425px;
   border-bottom-right-radius: 15px;
   border-bottom-left-radius: 15px;
   height: 110px;
@@ -201,6 +223,10 @@ select {
   opacity: 0.59;
   box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.8);
   background-color: var(--white);
+}
+
+.dropdown-menu-width {
+  width: 425px;
 }
 
 .player-name-level {
@@ -235,6 +261,7 @@ select {
   border: solid 2px var(--light-red);
   overflow-y: auto;
   overflow-x: hidden;
+  scrollbar-width: none;
 }
 
 .score-board::-webkit-scrollbar {
@@ -253,21 +280,35 @@ ul {
 }
 
 .score-box-heading {
-  width: 222px;
-  height: 30px;
-  margin: 15px 0px 22px 35px;
+  margin: 14px 0px 15px 0px;
   font-family: Gotham;
   font-size: 25px;
   color: var(--light-red);
 }
 
 .timer {
-  margin: 165.4px 0px 0px 57.7px;
   position: absolute;
-  top: 0;
   font-family: Gotham;
   font-size: 57px;
 }
+
+.timer-margin{
+  margin: -146px 0px 0px 57.7px;
+}
+
+/* for firefox */
+@-moz-document url-prefix() {
+  .dropdown-menu-width {
+    width: 496px;
+  }
+  .selected-dropdown-width{
+    width: 477px;
+  }
+  .timer-margin{
+    margin: -143.6px 0px 0px 45.7px;
+  }
+
+  }
 
 .timer-circle {
   width: 217.1px;
@@ -294,6 +335,14 @@ ul {
 }
 
 .play-game-timer {
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 65vh;
+}
+
+.play-game-timer-word{
   flex-direction: column;
   display: flex;
   align-items: center;
@@ -334,6 +383,7 @@ ul {
 }
 
 .quit-button {
+  display: flex;
   border: none;
   margin: 0px 0 11px 20.5px;
   padding: 0;
@@ -395,7 +445,7 @@ ul {
 }
 
 .base-timer__path-elapsed {
-  stroke-width: 5px;
+  stroke-width: 7px;
   stroke: #ffff;
 }
 
@@ -405,5 +455,280 @@ ul {
   transform: rotate(90deg);
   transform-origin: center;
   transition: auto;
-  stroke: var(--light-red);
+  stroke: currentColor;
+}
+
+.error{
+  color: red;
+    margin: 0px 0px 0px 11px;
+    text-align: left;
+    font-size: 29px;
+    font-family: LaserCorpsGradient;
+}
+
+.error-alignment{
+  margin: 0px 0px 0 10px;
+  display: flex;
+}
+
+.game-over-continue{
+  font-family: Gotham;
+  font-size: 14px;
+  color: #ffff;
+  margin: -19px 0px 0px 117px;
+}
+
+.enter-name-div{
+  margin: 0px 0 17px 0;
+  min-height:141px
+}
+
+.difficulty-drop-down-div{
+  height: 165px;
+  display: flex;
+  flex-direction: column;
+}
+
+.align-game-over{
+  height: 100vh;
+  justify-content: space-around;
+}
+
+@media (min-width: 300px) and (max-width: 470px) {
+  .keyboard-class {
+    width: 100px;
+  }
+
+  .heading {
+    margin: 4.7px 0px 0 0;
+    font-size: 40px;
+}
+
+.line {
+  width: 46px;
+  margin: 9px 0 0 0;
+}
+
+.game-detail {
+  margin: 0 20.9px 0 7.9px;
+  font-size: 13px;
+}
+
+.enter-name-div{
+  margin: 0px 0 0px 0;
+}
+
+.difficulty-drop-down-div{
+  height: 138px;
+}
+
+.enter-name {
+  width: 203px;
+  border-radius: 10px;
+  height: 27px;
+  font-size: 22px;
+}
+
+.error-alignment {
+  margin: 0px 0px 0px 16px;
+}
+
+.error {
+  margin: 7px 0px 0px 8px;
+  font-size: 16px;
+}
+
+.dropdown {
+  width: 264px;
+  margin: 0 0px 0 3px;
+  height: 58px;
+  padding: 0px 0px 0px 17px;
+  border-radius: 10px;
+  font-size: 22px;
+}
+
+.dropdown-menu {
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  height: 80px;
+  margin: 0px 11px 0;
+}
+
+.dropdown-menu-width {
+  width: 248px
+}
+
+.selected-dropdown-width {
+  width: 228px;
+}
+
+.selected-dropdown {
+  margin: 0 0px 2px 8px;
+  font-size: 18px;
+}
+
+.dropdown-content {
+  width: 218px;
+  margin: 0 27.1px 0px 8px;
+  font-size: 18px;
+}
+
+.play-icon{
+  width: 46px;
+    height: 44px;
+    margin-top: 8px;
+}
+
+.input-margin-font-size-game-start{
+  margin: 0 0 13px 0px;
+  font-size: 28px;
+}
+
+/* // game over */
+
+.input-margin-font-size-game-over{
+  margin: 0 0 0 8.5px;
+  font-size: 25px;
+}
+
+.new-high-score {
+  margin: 6px 0px 12.3px 0px;
+  font-size: 20px;
+}
+
+.icon {
+  /* width: 15px;
+  height: 15px;
+  margin: 7px 0px 0px 5px; */
+  width: 13px;
+    height: 13px;
+    margin: 6px 0px 0px 5px;
+}
+
+.player-name-level {
+  margin: 3px 0 0 12.3px;
+  font-size: 16px;
+}
+
+.quit-button {
+  margin: 0px 0 0px 5.5px;
+  font-size: 26px;
+}
+
+
+.game-over-game-count {
+  margin: 47px 0px 14px 0px;
+  font-size: 27px;
+}
+
+
+.score-value {
+  font-size: 45px;
+}
+
+.start-game-button-margin-game-over {
+  margin: -19px 0 0px 0px;
+}
+
+.play-again-icon {
+  height: 18px;
+  padding: 27px 0 0 0;
+}
+
+.game-over-continue {
+  font-size: 11px;
+  margin: -25px 0px 0px 67px;
+}
+
+.sub-heading-fast-finger {
+  margin: 0px 5px 0 0;
+  font-size: 21px;
+}
+
+.score-count {
+  margin: 0px 3px 0 0;
+  font-family: Breamcatcher;
+  font-size: 17px;
+  font-weight: normal;
+  color: var(--light-red);
+}
+
+.score-tag-margin{
+  margin: 3px 0 0 0;
+}
+
+.timer-circle {
+  width: 119.1px;
+  height: 119.1px;
+  padding: 12px 0px 21px 0px;
+}
+
+.play-game-timer-word {
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  height: auto;
+  justify-content: center;
+}
+
+.timer-margin {
+  margin: -83px 0px 0px 32.7px;
+}
+
+.timer {
+  position: absolute;
+  font-family: Gotham;
+  font-size: 33px;
+}
+
+.word {
+  text-transform: uppercase;
+  text-shadow: 0 0 16px rgba(0, 0, 0, 0.16);
+  font-family: Gotham;
+  font-size: 51px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--white);
+}
+
+.score{
+  color: var(--light-red);
+  margin: 3px 0px 0 6px;
+  font-size: 20px;
+  font-family: LaserCorpsGradient;
+  display: flex;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.score-board {
+  display: flex;
+    flex-direction: column;
+    align-self: center;
+  width: 250px;
+  height: 402px;
+  margin: 15px 0px 3px 0px;
+  /* margin: 21px 0px 3px 39px; */
+  border-radius: 15px;
+  border: solid 2px var(--light-red);
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+}
+
+.display-none{
+  display: none;
+}
+
+.display-block{
+  display: block;
+}
+
+.display-flex{
+  display: flex;
+}
 }

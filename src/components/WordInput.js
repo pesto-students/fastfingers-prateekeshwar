@@ -108,7 +108,7 @@ useEffect(() => {
   });
 
   return (
-    <div className="play-game-timer">
+    <div className="play-game-timer-word">
       <Timer timer={timer} stopGame={stopGame} wordChange={wordChange} 
       handleWordChange={handleWordChange}/> 
       <div className="general-flex-direction-row">{changeWordColor}</div>

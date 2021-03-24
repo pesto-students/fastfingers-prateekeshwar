@@ -11,10 +11,23 @@ export default function Timer({
   const [time, settime] = useState(timer);
   const [currInterval, setcurrInterval] = useState('');
   const [circleDashArray, setcircleDashArray] = useState('283, 283');
+  const [timerColor, settimerColor] = useState('green');
   const countRef = useRef(time);
   countRef.current = time;
   const countarr = useRef(circleDashArray);
   countarr.current = circleDashArray;
+
+  const getColor = () => {
+    let color;
+    if (countRef.current <= 0.25 * timer) {
+      color = 'red';
+    } else if (countRef.current <= 0.5 * timer) {
+      color = 'orange';
+    } else {
+      color = 'green';
+    }
+    settimerColor(color);
+  };
 
   useEffect(() => {
     if (wordChange) {
@@ -30,12 +43,11 @@ export default function Timer({
           stopGame();
           return;
         }
-        const fraction = (currCount-1)/timer;
-        const circleDashArr = `${(
-            fraction * 283
-        ).toFixed(0)}, 283`;
+        const fraction = (currCount - 1) / timer;
+        const circleDashArr = `${(fraction * 283).toFixed(0)}, 283`;
         setcircleDashArray(circleDashArr);
         settime(currCount - 1);
+        getColor();
       }, 10);
       setcurrInterval(interval);
     }
@@ -53,7 +65,8 @@ export default function Timer({
           <path
             id="base-timer-path-remaining"
             strokeDasharray={circleDashArray}
-            className="base-timer__path-remaining"
+            className="base-timer__path-remaining green"
+            style={{ color: timerColor }}
             d="
           M 50, 50
           m -45, 0
@@ -63,7 +76,9 @@ export default function Timer({
           />
         </g>
       </svg>
-      <p className="timer general-font-design-color">{(time / 100).toFixed(2).replace(/\./g, ':')}</p>
+      <p className="timer timer-margin general-font-design-color">
+        {(time / 100).toFixed(2).replace(/\./g, ':')}
+      </p>
     </div>
   );
 }
